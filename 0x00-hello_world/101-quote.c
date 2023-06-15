@@ -2,9 +2,9 @@
 #include <unistd.h>
 
 /**
-* Main - start of program without puts or printf functions
+* main - Start of program
 *
-* Return: use 1 (success) not 0
+* Return: Always 1 (Success)
 */
 int main(void)
 {
@@ -12,4 +12,5 @@ int main(void)
 	"and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
 	return (1);
 }
+
 
