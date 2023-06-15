@@ -1,4 +1,9 @@
 #include<stdio.h>
+/**
+ *This program makes use of the puts function 
+ *
+ * 
+ */
 
 int main(void)
 {
