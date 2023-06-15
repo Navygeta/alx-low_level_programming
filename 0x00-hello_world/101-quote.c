@@ -4,7 +4,7 @@
 /**
 * Main - start of program without puts or printf functions
 *
-* Return: 1 not 0
+* Return: use 1 (success) not 0
 */
 int main(void)
 {
