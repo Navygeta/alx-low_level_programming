@@ -7,19 +7,13 @@
  */
 int main(void)
 {
-	char low[26] = "abcdefghijklmnopqrstuvwxyz";
-	char up[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char low[26] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int i;
-	int j;
 
 	for (i = 0; i < 26; i++)
 	{
 		putchar(alp[i]);
 	}
-	for (j = 0; j < 26; j++)
-        {
-                putchar(up[j]);
-        }
 	putchar('\n');
 	return (0);
 }
