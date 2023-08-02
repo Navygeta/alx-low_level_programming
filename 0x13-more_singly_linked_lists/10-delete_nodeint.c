@@ -32,7 +32,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 
 
-	curr = temop->next;
+	curr = tempo->next;
 	tempo->next = curr->next;
 	free(curr);
 
