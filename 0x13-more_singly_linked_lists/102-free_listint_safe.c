@@ -1,85 +1,40 @@
-#include <stdio.h>
 #include "lists.h"
 
-size_t looped_listint_len(const listint_t *head);
-size_t print_listint_safe(const listint_t *head);
-
 /**
- * looped_listint_len - Counts unique nodes in listint_t
- * @head: Pointer to head node of listint_t
+ * free_listint_safe - frees listint_t
+ * @h: pointer to the first node in listint_t
  *
- * Return: 0 if looped else return unique nodes in list
+ * Return: elements in freed list
  */
-size_t looped_listint_len(const listint_t *head)
+size_t free_listint_safe(listint_t **h)
 {
-	const listint_t *slow, *fast;
-	size_t nodes = 1;
+	size_t len = 0;
+	int dif;
+	listint_t *temp;
 
-	if (head == NULL || head->next == NULL)
+	if (!h || !*h)
 		return (0);
 
-	slow = head->next;
-	fast = (head->next)->next;
-
-	while (fast)
+	while (*h)
 	{
-		if (slow == fast)
+		dif = *h - (*h)->next;
+		if (dif > 0)
 		{
-			slow = head;
-			while (slow != fast)
-			{
-				nodes++;
-				slow = slow->next;
-				fast = fast->next;
-			}
-
-			slow = slow->next;
-			while (slow != fast)
-			{
-				nodes++;
-				slow = slow->next;
-			}
-
-			return (nodes);
+			temp = (*h)->next;
+			free(*h);
+			*h = temp;
+			len++;
 		}
-
-		slow = slow->next;
-		fast = (fast->next)->next;
-	}
-
-	return (0);
-}
-
-/**
- * print_listint_safe - Prints the linked list safely
- * @head: Pointer to head node of listint_t
- *
- * Return: The number of nodes in list
- */
-size_t print_listint_safe(const listint_t *head)
-{
-	size_t nodes, index = 0;
-
-	nodes = looped_listint_len(head);
-
-	if (nodes == 0)
-	{
-		for (; head != NULL; nodes++)
+		else
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			free(*h);
+			*h = NULL;
+			len++;
+			break;
 		}
 	}
-	else
-	{
-		for (index = 0; index < nodes; index++)
-		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-		}
 
-		printf("-> [%p] %d\n", (void *)head, head->n);
-	}
+	*h = NULL;
 
-	return (nodes);
+	return (len);
 }
