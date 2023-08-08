@@ -1,8 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-//headers from standard library and POSIX system API
-
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
