@@ -1,9 +1,5 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * read_textfile- File read & printed to STDOUT
@@ -14,40 +10,17 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	char *buffer;
-	int descriptor;
-	ssize_t wr, rid;
+	char *bf;
+	ssize_t fd, w, t;
 
-	if (!filename)
-	{
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 		return (0);
-	}
+	bf = malloc(sizeof(char) * letters);
+	t = read(fd, bf, letters);
+	w = write(STDOUT_FILENO, bf, t);
 
-	descriptor = open(filename, O_RDONLY);
-	if (descriptor == -1)
-		return (0);
-
-	buffer = malloc(sizeof(char) * letters);
-	if (!buffer)
-		close(descriptor);
-		return (0);
-
-	rid = read(descriptor, buffer, letters);
-	if (rid < 0)
-	{
-		free(buffer);
-		close(descriptor);
-		return (0);
-	}
-
-	wr = write(STDOUT_FILENO, buffer, rid);
-	if (wr < 0)
-	{
-		free(buffer);
-		close(descriptor);
-		return (0);
-	}
-	free(buffer);
-	close(descriptor);
-	return (wr);
+	free(bf);
+	close(fd);
+	return (w);
 }
