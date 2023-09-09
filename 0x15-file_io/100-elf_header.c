@@ -206,8 +206,8 @@ void print_abi(unsigned char *e_ident)
 }
 
 /**
- * print_type - Prints the type of an ELF header.
- * @e_type: The ELF type.
+ * print_type - Prints the ELF header type.
+ * @e_type: ELF type.
  * @e_ident: The ELF ABI version value extracted from the e_ident array.
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
