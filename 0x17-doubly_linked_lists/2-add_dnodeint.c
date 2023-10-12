@@ -4,11 +4,13 @@
 /**
  * add_dnodeint - dlistint_t *add_dnodeint(dlistint_t **head, const int n).
  * @n: integer to add to new_node.
+ * @head: Pointer to a pointer dlistint_t
  * Return: Address of new element or NULL on failure.
  */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *new_node = (dlistint_t*)malloc(sizeof(dlistint_t));
+	dlistint_t *new_node = (dlistint_t *)malloc(sizeof(dlistint_t));
+
 	if (new_node == NULL)
 	{
 		return (NULL);
