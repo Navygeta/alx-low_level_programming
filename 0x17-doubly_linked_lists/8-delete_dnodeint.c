@@ -8,7 +8,7 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	delete_dnodeint_at_index *ptr = *head, *prev_node = NULL;
+	dlistint_t *ptr = *head, *prev_node = NULL;
 
 	if (ptr == NULL)
 	{
