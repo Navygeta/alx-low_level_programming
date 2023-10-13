@@ -9,10 +9,14 @@ int sum_dlistint(dlistint_t *head)
 {
 	int total = 0;
 	dlistint_t *current_node = head;
-
+	
+	if (head == NULL)
+	{
+		return (total);
+	}
 	while (current_node != NULL)
 	{
-		sum += current_node->n;
+		total += current_node->n;
 		current_node = current_node->next;
 	}
 
